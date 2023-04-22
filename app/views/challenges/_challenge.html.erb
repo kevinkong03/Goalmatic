@@ -1,0 +1,38 @@
+<div id="<%= dom_id challenge %>">
+  <p class="my-3">
+    <%= challenge.category.name %>
+  </p>
+
+  <h1 class="my-3">
+    <%= challenge.name %>
+  </h1>
+
+  <p class="my-4">
+    <strong class="block font-medium mb-1">Ends at: 
+      <span class="font-normal mb-1"><%= challenge.ends_at =%></span> 
+    </strong>
+    
+  </p>
+
+  <div class="container flex my-5">
+    <div class="w-1/2 pr-4">
+      <strong class="block font-medium mb-1">Goal:
+      <span class="font-normal mb-1"><%= challenge.goal %> <%=challenge.units%></span> 
+      </strong>
+    </div>
+
+    <div class="w-1/2 pr-4">
+      <strong class="block font-medium mb-1">Progress:
+      <span class="font-normal mb-1">
+        <%= render partial: 'challenges/challenge_progress', locals: { challenge: challenge } %>
+      </span> 
+      </strong>
+    </div>
+  </div>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this challenge", challenge, class: "form-submit" %>
+    <%= link_to 'Edit this challenge', edit_challenge_path(challenge), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

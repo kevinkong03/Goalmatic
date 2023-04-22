@@ -1,0 +1,16 @@
+<div class="block" id=<%= dom_id(activity)%>>
+    <span class="mr-10">
+        <%= link_to "#{activity.amount} #{activity.challenge.units}",
+        challenge_activity_path(challenge, activity) %>
+    </span>
+
+    <%= activity.note %>
+
+    <%= button_to 'Delete',
+        challenge_activity_path(challenge, activity),
+        params: { activity: { note: activity.note, amount: activity.amount, challenge_id: challenge.id }},
+        method: :delete,
+        form_class: "inline-block",
+        class: "rounded-sm ml-5 py-1 px-2 bg-gray-100 inline-block font-small" 
+    %>
+</div>
